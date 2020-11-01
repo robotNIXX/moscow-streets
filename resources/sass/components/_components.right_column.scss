@@ -1,0 +1,27 @@
+.homepage__right-column {
+  background-color: #fafafa;
+  .excel-import {
+    padding: 25px;
+    .file-upload {
+      border: 1px dashed #6E41E2;
+      box-sizing: border-box;
+      border-radius: 4px;
+      background-color: #fff !important;
+      .input-wrapper {
+        background-color: #fff !important;
+        &:hover {
+          background-color: #fff !important;
+        }
+      }
+    }
+    .file-upload-label {
+      font-size: 14px !important;
+      line-height: 55px !important;
+      color: #472c8a !important;
+      .file-upload-icon {
+        display: none !important;
+      }
+    }
+  }
+}
+//#FAFAFA
