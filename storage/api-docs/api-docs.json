@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Moscow streets API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Авторизация",
+                "operationId": "App\\Http\\Controllers\\API\\V1\\AuthController::login",
+                "responses": {
+                    "200": {
+                        "description": "Ответ для авторизации"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "422": {
+                "description": "Некорректный ответ для запроса авторизации"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      args:
+        user: ms
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: moscow-streets
+    container_name: moscow-streets-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./../:/var/www
+    networks:
+      - moscow-streets
+
+  db:
+    image: mysql:5.7
+    container_name: moscow-streets-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+    networks:
+      - moscow-streets
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: moscow-streets-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./../:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - moscow-streets
+
+networks:
+  moscow-streets:
+    driver: bridge
