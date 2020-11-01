@@ -9,6 +9,9 @@
    `php artisan migrate`
 5. Create default users<br/>
  `php artisan db:seed --class=UserSeeder`
+ `php artisan db:seed --class=RegionsSeeder`
+6. Import JSON data (upload dataset file into storage/app/data)
+ `php artisan ms:import-json <filename>`
 
 ## Start with docker
 1. Building docker's images <br>
